@@ -32,6 +32,18 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void Salario_Gerente_Deberia_Ser_Cinco_Minimos()
+        {
+
+            var servicioPagarEmpleados = new ServicioPagarEmpleados();
+
+            var pagoEmpleado = servicioPagarEmpleados.pagar(new Empleado("Juan", "Botero", "99999", DateTime.Today, Cargo.GERENTE));
+
+            Assert.AreEqual(pagoEmpleado.ValorSalario, 4903285);
+
+        }
+
 
     }
 }

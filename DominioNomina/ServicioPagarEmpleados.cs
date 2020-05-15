@@ -15,6 +15,10 @@ namespace DominioNomina
             else if (empleado.Cargo.Equals(Cargo.SUPERVISOR)) {
                 pagoEmpleado = new PagoEmpleado(empleado, SALARIO_MINIMO * 2);
             }
+            else if (empleado.Cargo.Equals(Cargo.GERENTE))
+            {
+                pagoEmpleado = new PagoEmpleado(empleado, SALARIO_MINIMO * 5);
+            }
             return pagoEmpleado;
         }
     }
