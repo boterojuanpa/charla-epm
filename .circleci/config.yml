@@ -1,29 +1,12 @@
-version: 2.1
+ version: 2.1
 
-jobs:
-  build:
-    docker:
-      - image: 'jetcipher/circleci-dotnet-core:3.0'
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies and build project
-          command: dotnet restore
-      - run:
-          name: Build
-          command: dotnet build -c Release
-#          working_directory: MyProject.Api
-      - run:
-          name: Running Tests
-          command: dotnet test
-          working_directory: PruebasUnitarias
-      - sonarcloud/scan
+ orbs:
+  win: circleci/windows@2.2.0
 
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.1
-
-workflows:
-  main:
-    jobs:
-      - build:
-          context: SonarCloud
+ jobs:
+   build:
+     executor: win/default     
+    
+     steps:
+       - checkout
+       - run: dotnet build
