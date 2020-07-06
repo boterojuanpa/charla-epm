@@ -30,8 +30,13 @@ namespace ConsolaNomina
             Console.Clear();
             Console.WriteLine("El empleado con nombre {0} \n" +
                 "lleva {2} años laborando para la empresa \n" +
-                "y tiene un salario de: {1} ", 
-                empleado.NombreCompleto(), pago.ValorSalario, empleado.AniosLaboradosEnLaEmpresa());            
+                "y tiene un salario básico de: {1} " +
+                "y una bonificacion de {3} " +
+                "Para un salario neto de: {4}", 
+                empleado.NombreCompleto(), pago.ValorSalarioBasico, 
+                empleado.AniosLaboradosEnLaEmpresa(), 
+                pago.ValorBonificacion,
+                pago.ValorSalarioTotal);            
                  
         }
 
