@@ -8,6 +8,7 @@ namespace ConsolaNomina
     {
         static void Main(string[] args)
         {
+            // Configuracion de datos
             Console.WriteLine("Ingrese el nombre del empleado: ");
             string nombre = Console.ReadLine();
 
@@ -20,19 +21,22 @@ namespace ConsolaNomina
             Console.Write("Ingrese la fecha de inicio en la compañia (Ej: 31/12/1987): ");
             DateTime fechaIngreso = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
+            Empleado empleado = new Empleado(nombre, apellido, identificacion, fechaIngreso, ObtenerCargo());
 
             var servicioPagarEmpleado = new ServicioPagarEmpleados();
 
-            Empleado empleado = new Empleado(nombre, apellido, identificacion, fechaIngreso, ObtenerCargo());
-
+            //Ejecucion del proceso
             PagoEmpleado pago = servicioPagarEmpleado.pagar(empleado);
 
             Console.Clear();
+
+            // Presentación de resultados
             Console.WriteLine("El empleado con nombre {0} \n" +
                 "lleva {2} años laborando para la empresa \n" +
                 "y tiene un salario de: {1} ", 
-                empleado.NombreCompleto(), pago.ValorSalario, empleado.AniosLaboradosEnLaEmpresa());            
-                 
+                empleado.NombreCompleto(), pago.ValorSalario, empleado.AniosLaboradosEnLaEmpresa());
+
+            Console.ReadLine();
         }
 
 
